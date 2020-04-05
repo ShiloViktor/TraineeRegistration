@@ -50,10 +50,10 @@ class SignUpScreenState extends State<SignUpScreen> {
   Widget buildgitHubTextField() {
     return TextFormField(
       controller: _gitHubLinkController,
-      decoration: InputDecoration(labelText: 'Ссылка на github'),
+      decoration: InputDecoration(labelText: 'Ссылка на Github'),
       validator: (String value) {
         if (value.isEmpty) {
-          return "GitHub Link is required";
+          return "Введите ссылку на Github";
         }
       },
     );
@@ -65,7 +65,7 @@ class SignUpScreenState extends State<SignUpScreen> {
       decoration: InputDecoration(labelText: 'Ссылка на резюме'),
       validator: (String value) {
         if (value.isEmpty) {
-          return "Summary Link is required";
+          return "Введите ссылку на резюме";
         }
       },
     );
