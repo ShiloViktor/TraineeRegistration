@@ -22,6 +22,8 @@ class UploadDataScreenState extends State<UploadDataScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailNameController = TextEditingController();
 
+  String url = 'https://vacancy.dns-shop.ru/api/candidate/token';
+
   SignUpScreenState signInScreenState;
   GetTokenResponse getTokenResponse;
 
@@ -85,17 +87,16 @@ class UploadDataScreenState extends State<UploadDataScreen> {
 
   Future<GetTokenResponse> transferDataToServer(
       String firstName, String lastName, String phone, String email) async {
-    final http.Response response =
-        await http.post('https://vacancy.dns-shop.ru/api/candidate/token',
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-            },
-            body: jsonEncode(<String, String>{
-              'firstName': firstName,
-              'lastName': lastName,
-              'phone': phone,
-              'email': email,
-            }));
+    final http.Response response = await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'firstName': firstName,
+          'lastName': lastName,
+          'phone': phone,
+          'email': email,
+        }));
     if (response.statusCode == 200) {
       getTokenResponse = GetTokenResponse.fromJson(json.decode(response.body));
       transformedMessage =

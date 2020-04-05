@@ -34,6 +34,8 @@ class SignUpScreenState extends State<SignUpScreen> {
   String summaryLink;
   String transformedMessage;
 
+  String url = 'https://vacancy.dns-shop.ru/api/candidate/test/summary';
+
   bool isLoading = false;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -79,8 +81,7 @@ class SignUpScreenState extends State<SignUpScreen> {
       String gitHubLink,
       String summaryLink,
       String token) async {
-    final http.Response response = await http.post(
-        'https://vacancy.dns-shop.ru/api/candidate/test/summary',
+    final http.Response response = await http.post(url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'authorization': "Bearer $token",
